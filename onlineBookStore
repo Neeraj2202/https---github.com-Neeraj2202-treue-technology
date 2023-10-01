@@ -1,1 +1,47 @@
+package onlineBookStore;
 
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class onlineBookStore {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Map<String, Double> bookPrice = new HashMap<>();
+        bookPrice.put("Java Programming", 120.0);
+        bookPrice.put("Python Programming", 150.0);
+        bookPrice.put("C++ Programming", 180.0);
+
+        System.out.println("Welcome to Online Book Store!");
+        System.out.println("Please select an option:");
+        System.out.println("1. Buy a book");
+        System.out.println("2. Exit");
+
+        int choice = scanner.nextInt();
+
+        while (choice != 2) {
+            if (choice == 1) {
+                System.out.println("Enter the name of the book you want to buy:");
+                String bookName = scanner.next();
+
+                if (bookPrice.containsKey(bookName)) {
+                    System.out.println("Book purchased successfully. Total amount: $" + bookPrice.get(bookName));
+                } else {
+                    System.out.println("Sorry, the book is not available.");
+                }
+            } else {
+                System.out.println("Invalid choice. Please try again.");
+            }
+
+            System.out.println("Please select an option:");
+            System.out.println("1. Buy a book");
+            System.out.println("2. Exit");
+
+            choice = scanner.nextInt();
+        }
+
+        System.out.println("Exiting the system");
+        scanner.close();
+    }
+}
